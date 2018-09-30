@@ -20,6 +20,7 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 @TestInstance(Lifecycle.PER_CLASS)
 class SourcesTestSuite {
 
+    private static final int WAIT_TIME = 5_000;
     private static final int TIMES = 10;
 
     private final PerformanceTestHelper testHelper = new PerformanceTestHelper();
@@ -36,22 +37,24 @@ class SourcesTestSuite {
 
     @ParameterizedTest(name = "repository_url=''{1}'', parallelism=''{2}''")
     @CsvFileSource(resources = "/repositories.csv")
-    void sources(long repositoryId, String scmUrl, int parallelism) {
+    void sources(long repositoryId, String scmUrl, int parallelism) throws Exception {
         log.info("executing test suite for {}", repositoryId);
 
         List<Long> results = new ArrayList<>();
         executor.runParallel(parallelism, TIMES, () -> results.add(testHelper.getSourcesExecutionTime(scmUrl)));
         testHelper.logOutput("SOURCES", results, repositoryId, parallelism);
+        Thread.sleep(WAIT_TIME);
     }
 
     @ParameterizedTest(name = "repository_url=''{1}'', parallelism=''{2}''")
     @CsvFileSource(resources = "/repositories.csv")
-    void annotations(long repositoryId, String scmUrl, int parallelism) {
+    void annotations(long repositoryId, String scmUrl, int parallelism) throws Exception {
         log.info("executing test suite for {}", repositoryId);
 
         List<Long> results = new ArrayList<>();
         executor.runParallel(parallelism, TIMES, () -> results.add(testHelper.getAnnotations(scmUrl)));
         testHelper.logOutput("ANNOTATIONS", results, repositoryId, parallelism);
+        Thread.sleep(WAIT_TIME);
     }
 }
 
