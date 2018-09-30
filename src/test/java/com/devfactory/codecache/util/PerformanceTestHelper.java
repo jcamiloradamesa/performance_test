@@ -58,7 +58,7 @@ public class PerformanceTestHelper {
 
     @SneakyThrows
     public void logOutput(String prefix, List<Long> data, long repositoryId, int parallelism) {
-        String fileName = String.format("%s_repo_%s_%d_times.txt", prefix, repositoryId, parallelism);
+        String fileName = String.format("output/%s_repo_%s_%d_times.txt", prefix, repositoryId, parallelism);
         PrintWriter writer = new PrintWriter(fileName, "UTF-8");
         data.forEach(writer::println);
         writer.close();

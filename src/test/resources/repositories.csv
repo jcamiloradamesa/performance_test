@@ -1,0 +1,3 @@
+2000, https://github.com/apache/nutch.git?branch=master&rev=HEAD&path=build.xml, 1
+3000, https://github.com/apache/parquet-mr.git?branch=master&rev=HEAD&path=pom.xml, 1
+4000, https://github.com/apache/zookeeper.git?branch=master&rev=HEAD&path=ivy.xml, 1
