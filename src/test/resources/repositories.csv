@@ -1,3 +1,9 @@
 2000, https://github.com/apache/nutch.git?branch=master&rev=HEAD&path=build.xml, 1
 3000, https://github.com/apache/parquet-mr.git?branch=master&rev=HEAD&path=pom.xml, 1
 4000, https://github.com/apache/zookeeper.git?branch=master&rev=HEAD&path=ivy.xml, 1
+5000, https://github.com/spring-projects/spring-security.git?branch=master&rev=HEAD&path=build.gradle, 1
+6000, https://github.com/apache/kafka.git?branch=trunk&rev=HEAD&path=build.gradle, 1
+7000, https://github.com/JetBrains/kotlin-native.git?branch=master&rev=HEAD&path=build.gradle, 1
+8000, https://github.com/spring-projects/spring-boot.git?branch=master&rev=HEAD&path=pom.xml, 1
+9000, https://github.com/spring-projects/spring-framework.git?branch=master&rev=HEAD&path=build.gradle, 1
+10000, https://github.com/apache/tomcat.git?branch=trunk&rev=HEAD&path=build.xml, 1

@@ -44,7 +44,6 @@ class SourcesTestSuite {
         testHelper.logOutput("SOURCES", results, repositoryId, parallelism);
     }
 
-
     @ParameterizedTest(name = "repository_url=''{1}'', parallelism=''{2}''")
     @CsvFileSource(resources = "/repositories.csv")
     void annotations(long repositoryId, String scmUrl, int parallelism) {
@@ -54,6 +53,5 @@ class SourcesTestSuite {
         executor.runParallel(parallelism, TIMES, () -> results.add(testHelper.getAnnotations(scmUrl)));
         testHelper.logOutput("ANNOTATIONS", results, repositoryId, parallelism);
     }
-
 }
 
