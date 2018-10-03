@@ -9,7 +9,7 @@ public class ExecutionHelper {
 
     private final ExecutorService executorService = Executors.newCachedThreadPool();
 
-    public void runParallel(int concurrency, int times, Runnable runnable) {
+    public void run(int concurrency, int times, Runnable runnable) {
         IntStream.rangeClosed(1, concurrency).parallel().forEach((index) -> runAsync(times, runnable));
     }
 

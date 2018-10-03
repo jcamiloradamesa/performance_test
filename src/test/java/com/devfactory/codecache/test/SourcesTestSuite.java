@@ -20,8 +20,7 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 @TestInstance(Lifecycle.PER_CLASS)
 class SourcesTestSuite {
 
-    private static final int WAIT_TIME = 5_000;
-    private static final int TIMES = 10;
+    private static final int SAMPLES = 1000;
 
     private final PerformanceTestHelper testHelper = new PerformanceTestHelper();
     private final ExecutionHelper executor = new ExecutionHelper();
@@ -41,9 +40,9 @@ class SourcesTestSuite {
         log.info("executing test suite for {}", repositoryId);
 
         List<Long> results = new ArrayList<>();
-        executor.runParallel(parallelism, TIMES, () -> results.add(testHelper.getSourcesExecutionTime(scmUrl)));
+        executor.run(parallelism, calculateTimes(parallelism),
+                () -> results.add(testHelper.getSourcesExecutionTime(scmUrl)));
         testHelper.logOutput("SOURCES", results, repositoryId, parallelism);
-        Thread.sleep(WAIT_TIME);
     }
 
     @ParameterizedTest(name = "repository_url=''{1}'', parallelism=''{2}''")
@@ -52,9 +51,12 @@ class SourcesTestSuite {
         log.info("executing test suite for {}", repositoryId);
 
         List<Long> results = new ArrayList<>();
-        executor.runParallel(parallelism, TIMES, () -> results.add(testHelper.getAnnotations(scmUrl)));
+        executor.run(parallelism, calculateTimes(parallelism), () -> results.add(testHelper.getAnnotations(scmUrl)));
         testHelper.logOutput("ANNOTATIONS", results, repositoryId, parallelism);
-        Thread.sleep(WAIT_TIME);
+    }
+
+    private int calculateTimes(int parallelism) {
+        return SAMPLES / parallelism;
     }
 }
 
