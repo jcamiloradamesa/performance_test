@@ -20,7 +20,7 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 @TestInstance(Lifecycle.PER_CLASS)
 class SourcesTestSuite {
 
-    private static final int SAMPLES = 1000;
+    private static final int SAMPLES = 100;
 
     private final PerformanceTestHelper testHelper = new PerformanceTestHelper();
     private final ExecutionHelper executor = new ExecutionHelper();
